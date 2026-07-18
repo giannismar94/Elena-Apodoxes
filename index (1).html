@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFF5F7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Elena · Αποδοχές 🌸</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FFE0EA'/><text x='50' y='70' font-size='52' text-anchor='middle'>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF5F7; --card:#FFFFFF; --card2:#FFF0F4;
+    --line:rgba(214,109,143,.16); --text:#4A3540; --muted:#A88A97;
+    --rose:#E75A8B; --rose-soft:#FFE0EA;
+    --lav:#9B7EDE; --lav-soft:#EFE9FC;
+    --gold:#E8A93C; --red:#D95757;
+    --shadow:0 6px 20px rgba(231,90,139,.10);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--text);
+    background-image:radial-gradient(circle at 15% 8%, rgba(231,90,139,.06), transparent 40%),
+                     radial-gradient(circle at 85% 30%, rgba(155,126,222,.07), transparent 45%);
+    font-family:'Manrope',-apple-system,'Segoe UI',Roboto,sans-serif;
+    padding:16px 14px calc(40px + env(safe-area-inset-bottom));max-width:480px;margin:0 auto}
+  h1{margin:2px 0 0;font-size:24px;font-weight:700;font-family:'Comfortaa',sans-serif;color:var(--rose)}
+  .num{font-variant-numeric:tabular-nums}
+  .eyebrow{font-size:11px;letter-spacing:3px;color:var(--lav);font-weight:800}
+  .sub{font-size:13px;color:var(--muted);margin:4px 0 14px}
+  .savemsg{font-size:11px;color:var(--muted);min-height:14px;text-align:right}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .grand{background:linear-gradient(135deg,#FFE9F0,#F3EDFE);display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:16px}
+  .grand .v{font-size:17px;font-weight:800}
+  .grand .l{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.3}
+  .tabs{display:flex;gap:8px;margin-bottom:14px}
+  .tabs button{flex:1;padding:10px 0;border-radius:14px;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);font-weight:800;font-size:14px;letter-spacing:1px;font-family:inherit;cursor:pointer}
+  .tabs button.on{border-color:var(--rose);background:var(--rose);color:#fff;box-shadow:0 4px 12px rgba(231,90,139,.3)}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .stat .l{font-size:11px;color:var(--muted);margin-bottom:2px}
+  .stat .v{font-size:15px;font-weight:600}
+  .stat .v.big{font-size:18px;font-weight:800}
+  .cardtitle{font-size:15px;font-weight:700;margin-bottom:12px;font-family:'Comfortaa',sans-serif;color:var(--rose)}
+  .wk{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+  .wk .h{text-align:center;font-size:11px;color:var(--muted);font-weight:600}
+  .day{aspect-ratio:1/1.15;border-radius:12px;border:1.5px solid var(--line);background:var(--card);
+    color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:1px;padding:0;position:relative;font-family:inherit;cursor:pointer}
+  .day .d{font-size:13px;font-weight:600}
+  .day.today .d{font-weight:800}
+  .day .dot{position:absolute;top:3px;right:4px;width:5px;height:5px;border-radius:50%;background:var(--rose)}
+  .day.work{border-color:var(--rose);background:var(--rose-soft);color:var(--rose)}
+  .day.repo{border-color:var(--lav);background:var(--lav-soft);color:var(--lav)}
+  .day.sel{border-color:var(--text)}
+  .day .tips{font-size:9px;color:var(--lav);font-weight:700}
+  .day .rp{font-size:8px;font-weight:700}
+  .hint{font-size:11px;color:var(--muted);margin-top:4px}
+  .editor{background:var(--card2);border-color:rgba(231,90,139,.3)}
+  .choices{display:flex;gap:8px;margin-bottom:12px}
+  .choices button{flex:1;padding:10px 0;border-radius:12px;border:1.5px solid var(--line);
+    background:var(--card);color:var(--muted);font-weight:800;font-size:13px;font-family:inherit;cursor:pointer}
+  .choices button.work-on{border-color:var(--rose);background:var(--rose);color:#fff}
+  .choices button.repo-on{border-color:var(--lav);background:var(--lav);color:#fff}
+  .choices button.clear-on{border-color:var(--muted);color:var(--text)}
+  .row{display:flex;gap:8px}
+  input{flex:1;min-width:0;background:#fff;border:1.5px solid var(--line);border-radius:12px;
+    color:var(--text);padding:10px 12px;font-size:14px;outline:none;font-family:inherit}
+  input:focus{border-color:var(--rose)}
+  .btn{border:none;border-radius:12px;padding:10px 16px;font-weight:800;font-size:14px;font-family:inherit;cursor:pointer}
+  .btn.rose{background:var(--rose);color:#fff}
+  .btn.lav{background:var(--lav);color:#fff}
+  .btn.ghost{background:#fff;border:1.5px solid var(--line);color:var(--muted)}
+  .weekrow{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;padding:8px 0;
+    border-top:1px solid var(--line);font-size:13px;align-items:center}
+  .weekrow:first-of-type{border-top:none}
+  .payrow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:13px}
+  .del{background:transparent;border:none;color:var(--red);font-size:15px;padding:2px 6px;cursor:pointer}
+  .empty{font-size:13px;color:var(--muted)}
+  .backup{display:flex;gap:8px;margin-top:10px}
+  .lbl{font-size:12px;color:var(--muted);margin-bottom:6px}
+  .hide{display:none}
+  header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+  .rate-banner{background:linear-gradient(135deg,var(--rose-soft),var(--lav-soft));
+    border:1.5px dashed var(--rose);border-radius:18px;padding:16px;margin-bottom:14px;text-align:center}
+  .rate-banner .t{font-family:'Comfortaa',sans-serif;font-weight:700;color:var(--rose);font-size:15px;margin-bottom:10px}
+  .rate-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:4px 12px;font-size:12px;color:var(--muted);cursor:pointer}
+  .rate-pill b{color:var(--rose)}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="eyebrow">ΚΑΛΟΚΑΙΡΙ '26 ✨</div>
+    <h1>Elena · Αποδοχές 🌸</h1>
+  </div>
+  <div class="savemsg" id="savemsg"></div>
+</header>
+<div class="sub" id="subline"></div>
+
+<div class="rate-banner hide" id="rateBanner">
+  <div class="t">Πόσο είναι το μεροκάματό σου; 💰</div>
+  <div class="row" style="max-width:260px;margin:0 auto">
+    <input type="text" inputmode="decimal" id="rateInput" placeholder="π.χ. 60">
+    <button class="btn rose" onclick="saveRate()">ΟΚ</button>
+  </div>
+</div>
+
+<div class="card grand" id="grand"></div>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="card" id="monthcard"></div>
+
+<div class="card">
+  <div id="calendar"></div>
+  <div class="hint">Πάτησε μια μέρα για να την ορίσεις ως δουλειά ή ρεπό και να βάλεις tips 💅</div>
+</div>
+
+<div class="card editor hide" id="editor"></div>
+
+<div class="card">
+  <div class="cardtitle" id="weektitle"></div>
+  <div id="weeks"></div>
+  <div class="hint">μέρες · μεροκάματα · tips</div>
+</div>
+
+<div class="card">
+  <div class="cardtitle" id="paytitle"></div>
+  <div class="row" style="margin-bottom:10px">
+    <input type="text" inputmode="decimal" id="payAmount" placeholder="Ποσό €" style="flex:0 0 100px">
+    <input type="text" id="payNote" placeholder="Σημείωση (προαιρετικό)">
+    <button class="btn rose" onclick="addPayment()">+</button>
+  </div>
+  <div id="paylist"></div>
+</div>
+
+<div class="card">
+  <div class="cardtitle">Ρυθμίσεις & Backup ⚙️</div>
+  <div class="lbl">Μεροκάματο (€)</div>
+  <div class="row" style="margin-bottom:12px">
+    <input type="text" inputmode="decimal" id="rateEdit" placeholder="π.χ. 60">
+    <button class="btn lav" onclick="saveRateEdit()">Αλλαγή</button>
+  </div>
+  <div class="empty">Κατέβασε τα δεδομένα σου σε αρχείο ή επανέφερέ τα σε άλλη συσκευή.</div>
+  <div class="backup">
+    <button class="btn ghost" style="flex:1" onclick="exportData()">Export</button>
+    <button class="btn ghost" style="flex:1" onclick="document.getElementById('importFile').click()">Import</button>
+    <input type="file" id="importFile" accept=".json" class="hide" onchange="importData(event)">
+  </div>
+</div>
+
+<script>
+const YEAR=2026, KEY='elena:apodoxes:2026';
+const MONTHS=[{m:6,label:'Ιούλιος',short:'ΙΟΥΛ'},{m:7,label:'Αύγουστος',short:'ΑΥΓ'},{m:8,label:'Σεπτέμβριος',short:'ΣΕΠ'}];
+const WD=['Δε','Τρ','Τε','Πε','Πα','Σα','Κυ'];
+const fmt=n=>new Intl.NumberFormat('el-GR',{style:'currency',currency:'EUR'}).format(n||0);
+const pad=n=>String(n).padStart(2,'0');
+const dk=(m,d)=>`${YEAR}-${pad(m+1)}-${pad(d)}`;
+const mk=m=>`${YEAR}-${pad(m+1)}`;
+
+let data={rate:null,days:{},payments:{}};
+try{const raw=localStorage.getItem(KEY); if(raw) data={...data,...JSON.parse(raw)};}catch(e){}
+
+const now=new Date();
+let activeMonth=(now.getFullYear()===YEAR && MONTHS.some(x=>x.m===now.getMonth()))?now.getMonth():6;
+let selectedDay=null;
+
+const rate=()=>data.rate||0;
+
+function save(){
+  try{
+    localStorage.setItem(KEY,JSON.stringify(data));
+    const el=document.getElementById('savemsg');
+    el.textContent='Αποθηκεύτηκε ✓';
+    clearTimeout(save._t); save._t=setTimeout(()=>el.textContent='',1500);
+  }catch(e){
+    document.getElementById('savemsg').textContent='Σφάλμα αποθήκευσης';
+  }
+}
+
+function parseNum(v){return parseFloat(String(v).replace(',','.'));}
+
+function saveRate(){
+  const n=parseNum(document.getElementById('rateInput').value);
+  if(isNaN(n)||n<=0)return;
+  data.rate=Math.round(n*100)/100; save(); render();
+}
+function saveRateEdit(){
+  const n=parseNum(document.getElementById('rateEdit').value);
+  if(isNaN(n)||n<=0)return;
+  data.rate=Math.round(n*100)/100;
+  document.getElementById('rateEdit').value='';
+  save(); render();
+}
+
+function calcMonth(m){
+  const dim=new Date(YEAR,m+1,0).getDate();
+  let work=0,repo=0,tips=0;
+  for(let d=1;d<=dim;d++){
+    const r=data.days[dk(m,d)]; if(!r)continue;
+    if(r.status==='work'){work++;tips+=r.tips||0;}
+    else if(r.status==='repo')repo++;
+  }
+  const earned=work*rate();
+  const paid=(data.payments[mk(m)]||[]).reduce((s,p)=>s+p.amount,0);
+  return{work,repo,tips,earned,paid,remaining:earned-paid};
+}
+
+function getWeeks(m){
+  const dim=new Date(YEAR,m+1,0).getDate();
+  const off=(new Date(YEAR,m,1).getDay()+6)%7;
+  const rows=[]; let cur=[];
+  for(let i=0;i<off;i++)cur.push(null);
+  for(let d=1;d<=dim;d++){cur.push(d); if(cur.length===7){rows.push(cur);cur=[];}}
+  if(cur.length){while(cur.length<7)cur.push(null); rows.push(cur);}
+  return rows;
+}
+
+function setStatus(key,status){
+  if(status===null){delete data.days[key];}
+  else{
+    data.days[key]={...(data.days[key]||{}),status};
+    if(status==='repo')delete data.days[key].tips;
+  }
+  save(); render();
+}
+
+function setTips(key){
+  const num=parseNum(document.getElementById('tipsInput').value);
+  const d={...(data.days[key]||{status:'work'})};
+  if(isNaN(num)||num<=0)delete d.tips; else d.tips=Math.round(num*100)/100;
+  data.days[key]=d;
+  save(); render();
+}
+
+function addPayment(){
+  const a=document.getElementById('payAmount'), n=document.getElementById('payNote');
+  const num=parseNum(a.value);
+  if(isNaN(num)||num<=0)return;
+  const k=mk(activeMonth);
+  if(!data.payments[k])data.payments[k]=[];
+  data.payments[k].push({id:Date.now(),amount:Math.round(num*100)/100,
+    date:new Date().toLocaleDateString('el-GR'),note:n.value.trim()});
+  a.value='';n.value='';
+  save(); render();
+}
+
+function removePayment(id){
+  const k=mk(activeMonth);
+  data.payments[k]=(data.payments[k]||[]).filter(p=>p.id!==id);
+  save(); render();
+}
+
+function exportData(){
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`elena-apodoxes-backup-${new Date().toISOString().slice(0,10)}.json`;
+  a.click(); URL.revokeObjectURL(a.href);
+}
+
+function importData(ev){
+  const f=ev.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const parsed=JSON.parse(r.result);
+      if(parsed && typeof parsed==='object' && parsed.days && parsed.payments){
+        data={rate:null,...parsed}; save(); render();
+        alert('Τα δεδομένα επαναφέρθηκαν με επιτυχία! 🌸');
+      }else alert('Το αρχείο δεν φαίνεται να είναι έγκυρο backup.');
+    }catch(e){alert('Δεν ήταν δυνατή η ανάγνωση του αρχείου.');}
+  };
+  r.readAsText(f);
+  ev.target.value='';
+}
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+function render(){
+  // Banner μεροκάματου
+  document.getElementById('rateBanner').classList.toggle('hide',!!data.rate);
+  document.getElementById('subline').innerHTML=data.rate
+    ?`Μεροκάματο <b style="color:var(--rose)">${fmt(rate())}</b> · Ιούλιος – Σεπτέμβριος`
+    :'Όρισε πρώτα το μεροκάματό σου για να ξεκινήσουν οι υπολογισμοί 👇';
+
+  // Σύνολα 3μήνου
+  const t=MONTHS.reduce((acc,mo)=>{const s=calcMonth(mo.m);
+    return{earned:acc.earned+s.earned,tips:acc.tips+s.tips,remaining:acc.remaining+s.remaining};},
+    {earned:0,tips:0,remaining:0});
+  document.getElementById('grand').innerHTML=`
+    <div><div class="v num" style="color:var(--rose)">${fmt(t.earned)}</div><div class="l">Δεδουλευμένα (3μηνο)</div></div>
+    <div><div class="v num" style="color:var(--lav)">${fmt(t.tips)}</div><div class="l">Tips (3μηνο)</div></div>
+    <div><div class="v num" style="color:${t.remaining>0?'var(--red)':'var(--muted)'}">${fmt(t.remaining)}</div><div class="l">Υπόλοιπο</div></div>`;
+
+  // Καρτέλες
+  document.getElementById('tabs').innerHTML=MONTHS.map(mo=>
+    `<button class="${mo.m===activeMonth?'on':''}" onclick="activeMonth=${mo.m};selectedDay=null;render()">${mo.short}</button>`).join('');
+
+  const label=MONTHS.find(x=>x.m===activeMonth).label;
+  const s=calcMonth(activeMonth);
+
+  // Σύνοψη μήνα
+  document.getElementById('monthcard').innerHTML=`
+    <div class="cardtitle">${label} 🗓️</div>
+    <div class="stats">
+      <div class="stat"><div class="l">Μέρες δουλειάς</div><div class="v num">${s.work} × ${fmt(rate())}</div></div>
+      <div class="stat"><div class="l">Δεδουλευμένα</div><div class="v big num" style="color:var(--rose)">${fmt(s.earned)}</div></div>
+      <div class="stat"><div class="l">Tips μήνα</div><div class="v num" style="color:var(--lav)">${fmt(s.tips)}</div></div>
+      <div class="stat"><div class="l">Ρεπό</div><div class="v num">${s.repo}</div></div>
+      <div class="stat"><div class="l">Πληρωμένα</div><div class="v num">${fmt(s.paid)}</div></div>
+      <div class="stat"><div class="l">Υπόλοιπο μήνα</div><div class="v big num" style="color:${s.remaining>0?'var(--red)':'var(--muted)'}">${fmt(s.remaining)}</div></div>
+    </div>`;
+
+  // Ημερολόγιο
+  const weeks=getWeeks(activeMonth);
+  let cal=`<div class="wk">${WD.map(w=>`<div class="h">${w}</div>`).join('')}</div>`;
+  weeks.forEach(row=>{
+    cal+='<div class="wk">'+row.map(d=>{
+      if(!d)return'<div></div>';
+      const r=data.days[dk(activeMonth,d)];
+      const today=(now.getFullYear()===YEAR&&now.getMonth()===activeMonth&&now.getDate()===d);
+      const cls=['day',r?.status==='work'?'work':'',r?.status==='repo'?'repo':'',selectedDay===d?'sel':'',today?'today':''].filter(Boolean).join(' ');
+      let inner=`<span class="d">${d}</span>`;
+      if(today)inner+='<span class="dot"></span>';
+      if(r?.status==='work'&&r.tips>0)inner+=`<span class="tips num">+${r.tips}€</span>`;
+      if(r?.status==='repo')inner+='<span class="rp">ΡΕΠΟ</span>';
+      return`<button class="${cls}" onclick="selectedDay=(selectedDay===${d}?null:${d});render()">${inner}</button>`;
+    }).join('')+'</div>';
+  });
+  document.getElementById('calendar').innerHTML=cal;
+
+  // Επεξεργασία μέρας
+  const ed=document.getElementById('editor');
+  if(selectedDay){
+    const key=dk(activeMonth,selectedDay);
+    const r=data.days[key];
+    let html=`<div class="cardtitle">${selectedDay} ${label} 💖</div>
+      <div class="choices">
+        <button class="${r?.status==='work'?'work-on':''}" onclick="setStatus('${key}','work')">Δουλειά</button>
+        <button class="${r?.status==='repo'?'repo-on':''}" onclick="setStatus('${key}','repo')">Ρεπό</button>
+        <button class="${!r?'clear-on':''}" onclick="setStatus('${key}',null)">Καθαρισμός</button>
+      </div>`;
+    if(r?.status==='work'){
+      html+=`<div class="lbl">Tips ημέρας (€)</div>
+        <div class="row">
+          <input type="text" inputmode="decimal" id="tipsInput" placeholder="π.χ. 12,50" value="${r.tips!=null?r.tips:''}">
+          <button class="btn lav" onclick="setTips('${key}')">Καταχώρηση</button>
+        </div>`;
+    }
+    ed.innerHTML=html; ed.classList.remove('hide');
+  }else{ed.classList.add('hide'); ed.innerHTML='';}
+
+  // Εβδομάδες
+  document.getElementById('weektitle').textContent=`Εβδομάδες · ${label}`;
+  document.getElementById('weeks').innerHTML=weeks.map(row=>{
+    let work=0,tips=0,first=null,last=null;
+    row.forEach(d=>{if(!d)return; if(first===null)first=d; last=d;
+      const r=data.days[dk(activeMonth,d)];
+      if(r?.status==='work'){work++;tips+=r.tips||0;}});
+    return`<div class="weekrow">
+      <span style="color:var(--muted)">${first}–${last}/${pad(activeMonth+1)}</span>
+      <span class="num" style="color:var(--muted)">${work} μέρ.</span>
+      <span class="num" style="color:var(--rose);font-weight:700">${fmt(work*rate())}</span>
+      <span class="num" style="color:var(--lav);font-weight:700">${fmt(tips)}</span>
+    </div>`;
+  }).join('');
+
+  // Πληρωμές
+  document.getElementById('paytitle').textContent=`Πληρωμές · ${label} 💸`;
+  const pays=data.payments[mk(activeMonth)]||[];
+  document.getElementById('paylist').innerHTML=pays.length===0
+    ?'<div class="empty">Καμία πληρωμή ακόμα. Πρόσθεσε ό,τι σου δίνουν για να βλέπεις το υπόλοιπο.</div>'
+    :pays.map(p=>`<div class="payrow">
+        <span style="color:var(--muted)">${p.date}${p.note?' · '+esc(p.note):''}</span>
+        <span style="display:flex;align-items:center;gap:10px">
+          <span class="num" style="font-weight:800">${fmt(p.amount)}</span>
+          <button class="del" onclick="removePayment(${p.id})" aria-label="Διαγραφή">✕</button>
+        </span>
+      </div>`).join('');
+}
+
+render();
+</script>
+</body>
+</html>
